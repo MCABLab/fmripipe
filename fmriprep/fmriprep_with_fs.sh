@@ -67,7 +67,7 @@ SUB=$1
 ###CHANGE TO YOUR BIDS BASE DIRECTORY (dont include $sub at the end)
 DATADIR=${EXPERIMENT}/Data/MRI_Data/bids
 ###CHANGE TO YOUR FREESURFER LICENSE FILE 
-FSFILE=${EXPERIMENT}/Data/MRI_Data
+FSFILE=${EXPERIMENT}/Data/MRI_Data/license.txt
 ###CHANGE TO DESIRED OUTPUT
 OUTPUT=${EXPERIMENT}/Data/MRI_Data/derivatives
 
@@ -79,7 +79,6 @@ singularity run --cleanenv /usr/local/packages/singularity/images/fmriprep.simg 
 ${DATADIR} ${OUTPUT} \
 participant \
 --participant-label ${SUB} \
---fs-no-reconall \
 --fs-license-file ${FSFILE} \
 --ignore fieldmaps \
 --use-syn-sdc \
