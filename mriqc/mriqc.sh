@@ -56,7 +56,7 @@ echo "----JOB [$JOB_NAME.$JOB_ID] START [`date`] on HOST [$HOSTNAME]----"
 
 # -- BEGIN USER DIRECTIVE --
 # Send notifications to the following address ###CHANGE THIS AND REMOVE # (optional)
-$ -M mag72@duke.edu
+$ -M kls77@duke.edu
 
 # -- END USER DIRECTIVE --
 
@@ -68,11 +68,11 @@ SUB=$1
 echo "backend: Agg" > ~/.config/matplotlib/matplotlibrc
 export DISPLAY=0.0; xhost +
 ###CHANGE TO YOUR BIDS BASE DIRECTORY (dont include $sub at the end)
-DATADIR=${EXPERIMENT}/Data/BIDS/
+DATADIR=${EXPERIMENT}/Data/MRI_Data/bids
 ###CHANGE TO DESIRED OUTPUT
-OUTPUT=${EXPERIMENT}/Analysis/mriqc/
+OUTPUT=${EXPERIMENT}/Data/MRI_Data/derivatives/mriqc
 ###CHANGE WHERE YOU WANT THE WORKFILES TO GO
-WORK=${EXPERIMENT}/Analysis/mriqc/work/
+WORK=${EXPERIMENT}/Data/MRI_Data/derivatives/work/
 
 singularity run --cleanenv /usr/local/packages/singularity/images/mriqc.simg \
 ${DATADIR} ${OUTPUT} \
@@ -82,7 +82,7 @@ participant \
 --mem_gb 16 \
 -w ${WORK} ###
 
-OUTDIR=${EXPERIMENT}/Analysis/logs/
+OUTDIR=${EXPERIMENT}/Data/MRI_Data/derivatives/Logs
 mkdir -p $OUTDIR
 
 echo "----JOB [$JOB_NAME.$JOB_ID] STOP [`date`]----"
